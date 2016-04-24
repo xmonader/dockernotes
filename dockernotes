@@ -1,0 +1,250 @@
+>docker info
+
+
+Containers: 26
+ Running: 5
+ Paused: 0
+ Stopped: 21
+Images: 4
+Server Version: 1.10.3
+Storage Driver: aufs
+ Root Dir: /var/lib/docker/aufs
+ Backing Filesystem: extfs
+ Dirs: 63
+ Dirperm1 Supported: true
+Execution Driver: native-0.2
+Logging Driver: json-file
+Plugins:
+ Volume: local
+ Network: bridge null host
+Kernel Version: 4.2.0-35-generic
+Operating System: Ubuntu 15.10
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 5.698 GiB
+Name: pyheaven
+ID: JMH7:2PWL:QJ5W:Y4LT:SKP6:44QC:232K:NXUK:4N4T:GYML:XF65:OM23
+WARNING: No swap limit support
+
+> docker run -i -t ubuntu /bin/bash
+-i interactive container -t attach to stdin/stdout
+
+> docker ps #running containers
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+d0f0cbd806a4        ubuntu:trusty       "/bin/bash"         4 hours ago         Up 4 hours                              node2
+f824c7dc5155        ubuntu:trusty       "/bin/bash"         4 hours ago         Up 4 hours                              node1
+a59b0e0c868e        ubuntu:trusty       "/bin/bash"         4 hours ago         Up 4 hours                              myjs7
+142353dddbb4        ubuntu:trusty       "/bin/bash"         6 hours ago         Up 6 hours                              mynode3
+446d3f358a85        ubuntu:trusty       "/bin/bash"         25 hours ago        Up 7 hours                              mynode1
+
+> docker ps a #list all containers
+
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                    PORTS               NAMES
+d0f0cbd806a4        ubuntu:trusty       "/bin/bash"         4 hours ago         Up 4 hours                                    node2
+f824c7dc5155        ubuntu:trusty       "/bin/bash"         4 hours ago         Up 4 hours                                    node1
+a59b0e0c868e        ubuntu:trusty       "/bin/bash"         4 hours ago         Up 4 hours                                    myjs7
+142353dddbb4        ubuntu:trusty       "/bin/bash"         7 hours ago         Up 7 hours                                    mynode3
+5cd17e934ede        ubuntu:trusty       "/bin/bash"         25 hours ago        Exited (0) 24 hours ago                       furious_stonebraker
+8096b68a2d9d        ubuntu:trusty       "--name mynode2"    25 hours ago        Created                                       grave_lamarr
+f1ccfd00eaef        ubuntu:trusty       "-name mynode2"     25 hours ago        Created                                       angry_jones
+446d3f358a85        ubuntu:trusty       "/bin/bash"         25 hours ago        Up 7 hours                                    mynode1
+31cfae7787f1        mywily:v2           "bash"              3 days ago          Exited (0) 3 days ago                         stoic_jepsen
+45c4d2b62d36        mywily:v2           "bash"              3 days ago          Exited (0) 3 days ago                         sleepy_cori
+8e4ee00aff35        mywily:v2           "bash"              3 days ago          Exited (0) 3 days ago                         goofy_poincare
+924ba4039f2c        ubuntu:wily         "it bash"           3 days ago          Created                                       high_joliot
+4f8c34592dac        ubuntu:wily         "bash"              3 days ago          Exited (130) 3 days ago                       high_bhabha
+60219aa6f9e3        ubuntu:wily         "/bin/bash"         3 days ago          Exited (0) 3 days ago                         loving_mirzakhani
+5bbfa885d063        ubuntu:wily         "--name mach2"      3 days ago          Created                                       goofy_ritchie
+8e2383f68b8b        ubuntu:wily         "mach2"             3 days ago          Created                                       jovial_engelbart
+31ee67f6d658        ubuntu:wily         "--name mach2"      3 days ago          Created                                       goofy_wilson
+01d3dbf8b533        ubuntu:wily         "/bin/bash"         3 days ago          Exited (0) 3 days ago                         insane_swanson
+76d4bb859345        ubuntu:wily         "/bin/bash"         3 days ago          Exited (0) 3 days ago                         cocky_bhabha
+8f30b15f23ef        ubuntu:wily         "/bin/bash"         3 days ago          Exited (0) 3 days ago                         adoring_fermi
+9820266d4522        ubuntu:wily         "--name mach2"      3 days ago          Created                                       insane_bardeen
+0b382acf0064        ubuntu:wily         "/bin/bash"         3 days ago          Exited (0) 3 days ago                         cranky_kilby
+e71bf4130d89        ubuntu:trusty       "/bin/bash"         3 days ago          Exited (0) 3 days ago                         berserk_noether
+cda619e9760f        hello-world         "/hello"            3 days ago          Exited (0) 3 days ago                         fervent_babbage
+7b102078cd15        hello-world         "/hello"            3 days ago          Exited (0) 3 days ago                         loving_wright
+8045030f0389        hello-world         "/hello"            3 days ago          Exited (0) 3 days ago                         small_yonath
+
+> docker ps -l  #details of the last container started..
+
+
+run/stop/restart
+======================
+> docker stop CONTAINER
+> docker start CONTAINER
+> docker restart CONTAINER
+> docker kill CONTAINER
+
+> docker rm CONTAINER
+
+
+
+commiting container state AKA saving state
+
+> docker commit CONTAINER SOME_NAME
+
+> docker images # list images
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mywily              v2                  3e39885b1876        3 days ago          659.2 MB
+ubuntu              trusty              b549a9959a66        7 days ago          188 MB
+ubuntu              wily                4e3b13c8a266        9 days ago          136.3 MB
+hello-world         latest              690ed74de00f        6 months ago        960
+
+
+sudo docker run -it -v /opt/code:/opt/code --name myjs8home -h myjs8home ubuntu:latest
+
+
+> docker run ubuntu /bin/echo 'Hello world'
+
+run runs a container
+ubuntu is the image
+/bin/echo is the command to be runned inside the container
+
+
+and container stops after that.
+
+> docker version #all info about the client, daemon, os, go version, ....
+Client:
+ Version:      1.10.3
+ API version:  1.22
+ Go version:   go1.5.3
+ Git commit:   20f81dd
+ Built:        Thu Mar 10 15:59:07 2016
+ OS/Arch:      linux/amd64
+
+Server:
+ Version:      1.10.3
+ API version:  1.22
+ Go version:   go1.5.3
+ Git commit:   20f81dd
+ Built:        Thu Mar 10 15:59:07 2016
+ OS/Arch:      linux/amd64
+
+>docker run -t -i ubuntu /bin/bash --name myjs8 -h js8home -v /opt/code:/opt/code #quickstart for JS8
+
+> docker run -t -i ubuntu /bin/bash
+
+runs in interactive mode
+
+> docker stop #stops all running containers
+
+*when container launches the prompt turns to root@.... #
+
+> exit
+
+to exit a container
+
+
+> docker logs CONTAINER #displays the logs of the container
+
+> docker --help #launches help :D
+
+> docker subcommand --help #shows help for subcommands...
+
+> docker rm container # remove container ... requires that you stop it first.
+
+> docker inspect CONTAINER # all the info needed on that container (status, image, mounts, configs, network settings ..)
+
+
+
+#executing on docker
+docker exec -d CONTAINER touch FILENAME #executing touch FILENAME in the background on CONTAINER
+
+
+####Okay
+
+LINKING containers
+we need to allow multiple containers to talk to each other.. (i.e) python & mongo containers...
+
+STEPS
+=====
+*NEW LINKING
+1- create a network
+docker network create --driver DRIVER NETWORK_NAME #DRIVER = bridge or anyother ones.
+2-create containers on that network
+docker run -d --net=NETWORK_NAME --name mongodb mongo
+docker run -d --net=NETWORK_NAME --name python -p 3000:3000 python3
+
+
+*LEGACY
+1- create the container
+docker run -d --name mymongodb mongo
+2- link it to another container
+docker run -d -p 3000:3000 --link mymongodb:mongodb --name pyapp python3 (ie)
+
+
+
+for docker on another machine with dif version
+
+export DOCKER_HOST="tcp://ip:port"
+docker version  #will get you a server version
+
+cat /etc/hosts # ip address -> container name is included
+ip a #works as well
+
+<C-P-Q> gets you back to your docker host *without* stopping the container
+
+docker save -o OUTPATH IMGNAME
+docker load -i TARIMG
+
+docker run --cpu-shares=256 #cpu shares
+docker run memory=1g # container gets 1GB
+docker run -d #daemonized
+
+
+***building an image
+ sudo docker run -it --name py35home -h py35home -v /opt:/opt ubuntu:wily
+
+
+1- install python3.5 
+apt-get install python3.5
+2- install vim 
+apt-get install vim
+
+YAY! NOW WE GOT python3.5 and vim installed, we don't want to do that everytime ... so snapshot it!
+docker commit -a "Ahmed Thabet" -m "python35 and vim yaay" py35home ahmed/py35vim:v1
+sha256:628b73353b9203896287dd043acc4e523f761f8b2a53f2623b7a8dbda8e88410
+
+now use that snapshot real quick
+docker run -it  --name test35 -h test35 ahmed/py35vim:v1 #and now we are good to gooo!!! yayyy
+
+
+Dockerfile
+==========
+
+yay! you came that far!!!!
+okay it's just a file used to describe the layers included in your image mostly, what it's based on what commands to prepare it what cmds you want to execute, what is the entry point...
+
+
+so! let's go for a Dockerfile for (python3.5 vim go ruby nginx)
+
+
+> vim Dockerfile
+FROM ubuntu:wily
+MAINTAINER xmonader@gmail.com 
+RUN apt-get update
+RUN apt-get install -y python3.5 curl wget ruby vim nginx golang
+
+CMD ["echo", "Hello updated ubuntu, py35 ruby golang vim nginx"]
+
+
+> docker build -t gopyruby:0.1 .   #build tag and dir
+> docker run -it --name gopy1 gopyruby:0.1 /bin/bash 
+
+
+
+note: if there's a cached layer it'll be used instead rebuilding it all over again
+
+RUN vs CMD
+
+cmd: commands at runtime when we launch a container
+
+run: buildtime, add layers to images, used to install apps as well
+
+only 1 cmd command per Dockerfile.
